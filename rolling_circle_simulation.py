@@ -46,8 +46,9 @@ def update(frame):
 
 
     return line,line2,line3,scatter
-    
+
 animation=FuncAnimation(fig=fig,func=update,frames=range(1,21,1),interval=50,repeat=False)
+
 
 
 axe.set_xlim(0, 60)
