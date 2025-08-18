@@ -53,7 +53,7 @@ def update(frame):
         return line,line2,line3,scatter
     
     # reverse animation (backward rolling)
-    else:
+    elif frame_list.index(frame)>19:
         reverse_y_lower=[]
         reverse_y_upper=[]
         _new_x=np.linspace(frame,frame +10,500)
@@ -71,15 +71,19 @@ def update(frame):
         line2.set_xdata(_new_x)
         line2.set_ydata(reverse_y_lower)
         line3.set_xdata([_new_x[(frame*25)-1],_new_h] if frame>0 else [frame,_new_h])
-        line3.set_ydata([reverse_y_upper[(frame*25)-1],k] if frame >0 else [5,k])
+        line3.set_ydata([reverse_y_lower[(frame*25)-1],k] if frame >0 else [5,k])
         scatter.set_offsets(np.c_[_new_h, k])
         scatter.set_color("Cadetblue")
+        line.set_color("orange")
+        line2.set_color("orange")
         return line,line2,line3,scatter
 
 
 
 animation=FuncAnimation(fig=fig,func=update,frames=frame_list,interval=50,repeat=False)
 axe.set_xlim(0, 60)
-axe.set_ylim(0, 50)
+axe.set_ylim(0, 60)
+axe.set_aspect('equal', adjustable='box')
 plt.grid(True)
+plt.title("Rolling circle simulation")
 plt.show()
