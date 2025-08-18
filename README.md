@@ -43,14 +43,14 @@ updating them frame by frame to create smooth motion.
 
 ## 🎥 Example Behavior
 
--   A circle moves across the x-axis.\
--   Both upper and lower semicircle arcs are redrawn each frame.\
--   A line connects the circle's center to its circumference.\
+-   A circle moves across the x-axis.
+-   Both upper and lower semicircle arcs are redrawn each frame.
+-   A line connects the circle's center to its circumference.
 -   The circle's center is marked with a scatter point.
 
 ## ✨ Possible Extensions
 
--   Add multiple moving circles.\
--   Change colors dynamically per frame.\
--   Animate circle radius instead of horizontal movement.\
+-   Add multiple moving circles.
+-   Change colors dynamically per frame.
+-   Animate circle radius instead of horizontal movement.
 -   Export animation as a `.gif` or `.mp4`.
