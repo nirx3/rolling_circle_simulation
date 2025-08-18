@@ -22,12 +22,13 @@ line3, =axe.plot([x[0],h],[y_upper[0],k])
 scatter =axe.scatter(h,k)
 
 #frame_list
-frame_list=list(range(1,21,1))+list(range(19,-1,-1))
+frame_list=list(enumerate(list(range(1,21,1))+list(range(19,-1,-1))))
 
 #animation function
-def update(frame):
+def update(frame_tuple):
     #forward rolling
-    if frame_list.index(frame)<=19:
+    frame_index,frame = frame_tuple
+    if frame_index <= 19:
         new_y_lower_value=[]
         new_y_upper_value=[]
         new_x=np.linspace(frame,frame+10,500)
@@ -50,10 +51,9 @@ def update(frame):
         scatter.set_color("Cadetblue")
         line.set_color("blue")
         line2.set_color("blue")
-        return line,line2,line3,scatter
     
     # reverse animation (backward rolling)
-    elif frame_list.index(frame)>19:
+    else:
         reverse_y_lower=[]
         reverse_y_upper=[]
         _new_x=np.linspace(frame,frame +10,500)
@@ -76,8 +76,8 @@ def update(frame):
         scatter.set_color("Cadetblue")
         line.set_color("orange")
         line2.set_color("orange")
-        return line,line2,line3,scatter
-
+        
+    return line,line2,line3,scatter
 
 
 animation=FuncAnimation(fig=fig,func=update,frames=frame_list,interval=50,repeat=False)
